@@ -16,6 +16,11 @@ jobs:
       attestations: write
       id-token: write
     steps:
+      - uses: actions/delete-package-versions@v5
+        with:
+          package-name: "devcontainer"
+          package-type: "container"
+          min-versions-to-keep: 1
       - name: Checkout repository
         uses: actions/checkout@v4
       - name: Set up Docker Buildx
@@ -35,12 +40,10 @@ jobs:
         id: push
         uses: docker/build-push-action@v6
         with:
-          context: .
+          context: .devcontainer
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
       - name: Generate artifact attestation
         uses: actions/attest-build-provenance@v1
         with:
