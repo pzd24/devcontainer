@@ -1,14 +1,12 @@
-version: '3.8'
+version: '3'
 
 services:
   app:
-    build:
-      context: ..
-      dockerfile: .devcontainer/Dockerfile
+    image: ghcr.io/pengzhendong/devcontainer:master
+    platform: linux/amd64
+    container_name: dev
     volumes:
-      - ..:/workspace
+      - ..:/home/vscode/workspace
     ports:
       - "8080:8080"
-    user: vscode
     command: sleep infinity
-
