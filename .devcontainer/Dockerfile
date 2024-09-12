@@ -1,6 +1,6 @@
-FROM ubuntu:22.04
-LABEL org.opencontainers.image.source https://github.com/pengzhendong/devcontainer
-LABEL maintainer="Zhendong Peng <zhendong.peng@qq.com>"
+FROM nvcr.io/nvidia/pytorch:24.06-py3
+LABEL org.opencontainers.image.source https://github.com/pzd24/devcontainer
+LABEL maintainer="Zhendong Peng <pengzhendong@shoppal.ai>"
 
 ARG USERNAME=vscode
 ARG USER_UID=1000
